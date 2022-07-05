@@ -1,3 +1,3 @@
 config.json
-.env
-node_moduled
+*.env
+node_modules
