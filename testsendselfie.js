@@ -3,21 +3,26 @@ const { MessageAttachment, MessageEmbed } = require('discord.js');
 
 // const url = "https://main-dalle-server-scy6500.endpoint.ainize.ai/generate"
 const url = "https://master-ugatit-kmswlee.endpoint.ainize.ai/selfie2anime"
-var request = require('request');
-const message = require('./message');
+var http = require('http');
+const message = require('./events/message');
 var FormData = require('form-data');
 
 async function getDrawing(mafu) {
+
+    console.log("1")
    
     console.log(mafu);
     const formData = new FormData();
+    console.log("1")
     const image =  {
         url: mafu,
         type:'image/jpeg',
         name:'input.jpeg'
     }
-    formData.append('file', image);
-
+    console.log("2")
+    formData. append('file', image);
+    console.log("3")
+    
     const options = {
         method: 'post',
         headers: {'Accept':'images/*', 'content-type' : 'multipart/form-data'},
@@ -25,13 +30,13 @@ async function getDrawing(mafu) {
         body:   formData
       };
 
-    console.log("sadas")
-      
+    
+      console.log("3")
     console.log(text);
     // Return new promise
     return new Promise(function(resolve, reject) {
       // Do async job
-      request.post(options, function(err, resp, body) {
+      http.request(options, function(err, resp, body) {
         if (err) {
           reject(err);
         } else {
@@ -67,7 +72,6 @@ module.exports = {
         });     
   },
 };
-
 
 
 

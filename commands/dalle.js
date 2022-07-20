@@ -48,6 +48,7 @@ module.exports = {
         console.log("description : " + description);
 
         var body = await getDrawing(description);
+        console.log(body)
 
         var base64Data = body.replace(/^data:image\/png;base64,/, "");
 
